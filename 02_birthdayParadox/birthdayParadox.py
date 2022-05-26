@@ -12,7 +12,7 @@ def getBirthdays(numberOfBirthdays):
         startOfYear = datetime.date(2001, 1, 1)
 
         # Get a random day into the year:
-        randomNumberOfDays = datetime.timedelta(random.randint(0, 365))
+        randomNumberOfDays = datetime.timedelta(random.randint(0, 364))
         birthday = startOfYear + randomNumberOfDays
         birthdays.append(birthday)
     return birthdays
@@ -24,7 +24,7 @@ def getMatch(birthdays):
         return None  # All birthdays are unique; return none.
 
     # Compare each birthday to every other birthday:
-    for a, birthdayA in enumerate(birrthdays):
+    for a, birthdayA in enumerate(birthdays):
         for b, birthdayB in enumerate(birthdays[a + 1 :]):
             if birthdayA == birthdayB:
                 return birthdayA  # return matching birthday.
@@ -59,7 +59,7 @@ MONTHS = (
 while True:  # Keep asking until the user enters a valid amount
     print("How many birthdays shall I generate? (Max 100)")
     response = input("> ")
-    if response.isdecmial() and (0 < int(response) <= 100):
+    if response.isdecimal() and (0 < int(response) <= 100):
         numBDays = int(response)
         break  # User has entered a valid amount.
 print()
