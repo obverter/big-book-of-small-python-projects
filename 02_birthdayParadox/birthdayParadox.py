@@ -7,7 +7,7 @@ import datetime, random
 def getBirthdays(numberOfBirthdays):
     """Returns a list of number random date objects for birthdays."""
     birthdays = []
-    for i in range(numberOfBirthdays):
+    for _ in range(numberOfBirthdays):
         # The year is irrelevant. Day/Month matter.
         startOfYear = datetime.date(2001, 1, 1)
 
@@ -25,7 +25,7 @@ def getMatch(birthdays):
 
     # Compare each birthday to every other birthday:
     for a, birthdayA in enumerate(birthdays):
-        for b, birthdayB in enumerate(birthdays[a + 1 :]):
+        for birthdayB in birthdays[a + 1 :]:
             if birthdayA == birthdayB:
                 return birthdayA  # return matching birthday.
 
@@ -72,7 +72,7 @@ for i, birthday in enumerate(birthdays):
         # Display a comma for each birthday after the first birthday.
         print(", ", end="")
         monthName = MONTHS[birthday.month - 1]
-        dateText = "{} {}".format(monthName, birthday.day)
+        dateText = f"{monthName} {birthday.day}"
         print(dateText, end="")
 print()
 print()
@@ -84,7 +84,7 @@ match = getMatch(birthdays)
 print("In this simulation, ", end="")
 if match != None:
     monthName = MONTHS[match.month - 1]
-    dateText = "{} {}".format(monthName, match.day)
+    dateText = f"{monthName} {match.day}"
     print("multiple people have a birthday on", dateText)
 else:
     print("there are no matching birthdays.")
